@@ -26,7 +26,7 @@ st.title(title)
 st.sidebar.title("Image Captioner")
 st.sidebar.markdown("""This is a simple prototype of image captioning for blind persons. It uses GPT-2 as the language model and the VIT-Base-Patch16-224-in21k as the feature extractor. The model is trained on the VIT-Base-Patch16-224-in21k dataset. 
 This is a prototype for realtime implementation more to come.
-# Made with ❤️ by Vasanth. 
+# Made with ❤️ by team BLIVIZ. 
 # [Linkedin](https://www.linkedin.com/in/vasanthengineer4949/)""")
 uploaded_file = st.file_uploader("Choose an image...", type="jpg")
 if uploaded_file is not None:
@@ -34,9 +34,9 @@ if uploaded_file is not None:
     st.image(image, caption='Uploaded Image.', use_column_width=True)
     caption = predict(image)
     st.write(f"Caption: {caption}")
-    # from gtts import gTTS
-    # output = gTTS(text=caption, lang="en", slow=False)
-    # output.save("output.mp3")
-    # import os
-    # st.audio("output.mp3")
-    # os.remove("output.mp3")
+    from gtts import gTTS
+    output = gTTS(text=caption, lang="en", slow=False)
+    output.save("output.mp3")
+    import os
+    st.audio("output.mp3")
+    os.remove("output.mp3")
